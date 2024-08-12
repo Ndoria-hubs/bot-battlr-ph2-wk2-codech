@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import './BotCollection.css';
 
+// server URL
 const baseURL = "http://localhost:3000/bots";
 
 
 const BotCollection = ({ onAddToArmy }) => {
     const [bots, setBots] = useState([]);
 
+    // fetch using http GET ||
     useEffect(() => {
         const fetchBots = async () => {
             try {
@@ -44,6 +46,7 @@ const BotCollection = ({ onAddToArmy }) => {
 
 
     return (
+        // map bots from sjon server under bots collection
         <div className="bot-collection-container">
         <h3>Galactico's Space BOTS COLLECTION :</h3>
           <div className="bot-grid">
@@ -55,12 +58,10 @@ const BotCollection = ({ onAddToArmy }) => {
             <p>Damage: {bot.damage}</p>
             <p>Armor: {bot.armor}</p>
             <p>Class: {bot.bot_class}</p>
-            <button onClick={() => handlePlayCatchphrase(bot.catchphrase)}>
-                Play Catchphrase
-            </button>
+            <button onClick={() => handlePlayCatchphrase(bot.catchphrase)}>Play_Catchphrase</button>
             <p>Creation-date: {bot.created_at}</p>
             <p>Last update: {bot.updated_at}</p>
-                    </div>
+          </div>
                 ))}
           </div>
         </div>
