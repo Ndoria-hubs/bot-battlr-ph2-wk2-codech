@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const MyBotArmy = ({ botArmy, onRemoveFromArmy }) => {
+const MyBotArmy = ({ botArmy, onRemoveFromArmy, handleRemoveFromArmy}) => {
 
   return (
     <div className="container">
       <h3 className="heading">Your Bot Army</h3>
-      <div className="bot-grid">
+      <div className="bot-grid" onClick={() => {handleRemoveFromArmy}}>
         {botArmy.map((bot) => (
           <div
             className="bot-card"

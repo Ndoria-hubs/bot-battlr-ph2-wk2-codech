@@ -21,14 +21,14 @@ function App() {
     }
   };
 
-  // const handleRemoveFromArmy = (botId) => {
-  //   setBotArmy(prevArmy => prevArmy.filter(bot => bot.id !== botId));
-  // };
+  const handleRemoveFromArmy = (botId) => {
+    setBotArmy(prevArmy => prevArmy.filter(bot => bot.id !== botId));
+  };
 
   return (
     <>
       <BotCollection onAddToArmy={handleAddToArmy} />
-      <MyBotArmy botArmy={botArmy} /*onRemoveFromArmy={handleRemoveFromArmy}*/ />
+      <MyBotArmy botArmy={botArmy} onRemoveFromArmy={handleRemoveFromArmy} />
       <p>Clicking on a bot in MyBotArmy removes it from MyBotArmy component</p>
       <span>Lastly - add a red button that discharges a bot from their service forever</span>
     </>
