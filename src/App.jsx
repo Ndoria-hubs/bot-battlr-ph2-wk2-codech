@@ -4,6 +4,10 @@ import BotCollection from './BotCollection';
 import MyBotArmy from './MyBotArmy';
 
 function App() {
+
+  const baseURL = "http://localhost:3000/bots";
+
+
   const [botArmy, setBotArmy] = useState([]);
 
   const handleAddToArmy = (bot) => {
@@ -27,8 +31,8 @@ function App() {
 
   return (
     <>
-      <BotCollection onAddToArmy={handleAddToArmy} />
-      <MyBotArmy botArmy={botArmy} onRemoveFromArmy={handleRemoveFromArmy} />
+      <BotCollection onAddToArmy={handleAddToArmy} baseURL={baseURL} />
+      <MyBotArmy botArmy={botArmy} onRemoveFromArmy={handleRemoveFromArmy} baseURL={baseURL} />
       <p>Clicking on a bot in MyBotArmy removes it from MyBotArmy component</p>
       <span>Lastly - add a red button that discharges a bot from their service forever</span>
     </>
