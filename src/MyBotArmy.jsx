@@ -1,46 +1,43 @@
-import { useEffect, useState } from "react";
+const MyBotArmy = ({ botArmy, onRemoveFromArmy, baseURL }) => {
 
-const MyBotArmy = ({ botArmy, onRemoveFromArmy, handleRemoveFromArmy}) => {
 
-    const handleDeleteBotArmy = ({baseURL}) => {
+const handleDeleteBot = async (botId) => {
+    try {
+        const response = await fetch(`${baseURL}/${botId}`, { method: 'DELETE' });
         
-        useEffect(() => {
-            const DeleteBot = async () => {
-                await fetch(`${baseURL}/bot.id` ,{method: 'DELETE'})
-            }
-
-        DeleteBot();    
-        }, [])
+        if (response.ok) {
+            console.log('Bot deleted successfully');
+            onRemoveFromArmy(botId); // Remove from local state after successful delete
+        } else {
+            console.error('Failed to delete bot:', response.statusText);
         }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
 
-  return (
-    <div className="container">
-      <h3 className="heading">Your Bot Army</h3>
-      <div className="bot-grid" onClick={() => {handleRemoveFromArmy}}>
-        {botArmy.map((bot) => (
-          <div
-            className="bot-card"
-            key={bot.id}
-            onClick={() => onRemoveFromArmy(bot.id)}
-          >
-            <h4>I am {bot.name}</h4>
-            <img
-              src={bot.avatar_url}
-              alt={`${bot.name} avatar`}
-              className="bot-image"
-            />
-            <p>Health: {bot.health}</p>
-            <p>Damage: {bot.damage}</p>
-            <p>Armor: {bot.armor}</p>
-            <p>Class: {bot.bot_class}</p>
-            <p>{bot.catchphrase}</p>
-            <button onClick={() => {handleDeleteBotArmy}}>Delete Bot</button>
-          </div>
-        ))}
-      </div>
-
-    </div>
-  );
+    return (
+        <div className="container">
+            <h3 className="heading">Your Bot Army</h3>
+            <div className="bot-grid">
+                {botArmy.length > 0 ? (
+                    botArmy.map((bot) => (
+                        <div className="bot-card" key={bot.id} onClick={() => onRemoveFromArmy(bot.id)}>
+                         <h4>I am {bot.name}</h4>
+                         <img src={bot.avatar_url} alt={`${bot.name} avatar`} className="bot-image" />
+                         <p>Health: {bot.health}</p>
+                         <p>Damage: {bot.damage}</p>
+                         <p>Armor: {bot.armor}</p>
+                         <p>Class: {bot.bot_class}</p>
+                         <button onClick={() => handleDeleteBot(bot.id)}>Discharge Bot From Service</button>
+                        </div>
+                    ))
+                ) : (
+                    <p>No bots in your army</p>
+                )}
+            </div>
+        </div>
+    );
 };
 
 export default MyBotArmy;
