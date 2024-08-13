@@ -54,7 +54,7 @@ const BotCollection = ({ onAddToArmy }) => {
             <div className="bot-grid">
                 {bots.map((bot) => (
              <div className="bot-card" key={bot.id} onClick={() => onAddToArmy(bot)} >
-                <h4>I am {bot.name}</h4>
+                <h2>I am {bot.name}</h2>
                 <img src={bot.avatar_url} alt={`${bot.name} avatar`} className="bot-image" />
                 <p>Health: {bot.health}</p>
                 <p>Damage: {bot.damage}</p>
