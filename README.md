@@ -45,7 +45,11 @@ To set up BOT BATTLR  on your local machine, follow these steps:
 
 ## Usage
 
-- Upon opening the application, movis are fetched from a local server("http://localhost:3000/bots") and displayed on the web page. The server may not run automatically so make sure to check and run it using "json-server db.json"
+- Upon opening the application, bots are fetched from a local server("http://localhost:3000/bots") 
+  and displayed on the web page. The server may not run automatically so make sure to check and run it using 
+  "json-server db.json". 
+  # #** MAKE SURE YOUR LOCAL SERVER IS RUNNING **#
+  Next run npm dev open up the deployment Link: 'https://bot-battlr-lyart.vercel.app/'
 
  - Browse through the displayed bots whilst noting their descriptions and specifics.
 
