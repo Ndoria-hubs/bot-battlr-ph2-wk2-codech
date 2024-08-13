@@ -54,3 +54,6 @@ const MyBotArmy = ({ botArmy, onRemoveFromArmy, baseURL /* fetchBots*/ }) => {
 };
 
 export default MyBotArmy;
+
+
+// why did my delete request not work without refreshing??!!
