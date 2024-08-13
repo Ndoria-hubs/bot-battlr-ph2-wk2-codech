@@ -2,19 +2,19 @@ import './MyBotArmy.css';
 
 const MyBotArmy = ({ botArmy, onRemoveFromArmy, baseURL /* fetchBots*/ }) => {
 
-    const handleDeleteBot = async (botId) => {
+    // || Remove bot from botArmy only (frontend) ||
+    const handleReleaseBot = (botId) => {
+        onRemoveFromArmy(botId);
+    };
 
-        // || create a DELETE http request to delete bot from server
+    // || Delete bot from backend and remove from botArmy (frontend) ||
+    const handleDeleteBot = async (botId) => {
         try {
             const response = await fetch(`${baseURL}/${botId}`, { method: 'DELETE' });
 
             if (response.ok) {
                 console.log('Bot deleted successfully');
-                onRemoveFromArmy(botId); 
-
-                // |***(( My refresher did not work, on deleting i have to refresh my page manually; assistance needed))****|
-                // fetchBots(); 
-
+                onRemoveFromArmy(botId); // Update state to remove bot from frontend
             } else {
                 console.error('Failed to delete bot. Status:', 'Status Text:', response.statusText);
             }
@@ -25,26 +25,30 @@ const MyBotArmy = ({ botArmy, onRemoveFromArmy, baseURL /* fetchBots*/ }) => {
 
     return (
         // map over single bot to display under my bot army ||
-
         <div className="container">
-         <h3 className="heading">My Bot Army</h3>
-         <div className="bot-grid">
-            {botArmy.length > 0 ? (
-                 botArmy.map((bot) => (
-           <div className="bot-card" key={bot.id}>
-           <h4>I am {bot.name}</h4>
-           <img src={bot.avatar_url} alt={`${bot.name} avatar`} className="bot-image" />
-           <p>Health: {bot.health}</p>
-           <p>Damage: {bot.damage}</p>
-           <p>Armor: {bot.armor}</p>
-           <p>Class: {bot.bot_class}</p>
-           <button onClick={(event) => handleDeleteBot(bot.id, event)}>Discharge Bot From Service </button>
-           </div>
-                 ))
-            ) : (
-           <p>No bots in your army yet! Click on a bot to add to your army!</p>
-            )}
-         </div>
+            <h3 className="heading">My Bot Army</h3>
+            <div className="bot-grid">
+                {botArmy.length > 0 ? (
+                    botArmy.map((bot) => (
+                <div className="bot-card" key={bot.id} onClick={() => handleReleaseBot(bot.id)} // Click to remove bot from army (frontend only)
+                     >
+                   <div className="card-content">
+                   <button className="delete-button" onClick={() => {event.preventDefault(); // Prevent default action
+                           handleDeleteBot(bot.id); // Delete bot from backend and frontend
+                   }} > X </button>
+                   <h4>I am {bot.name}</h4>
+                   <img src={bot.avatar_url} alt={`${bot.name} avatar`} className="bot-image" />
+                   <p>Health: {bot.health}</p>
+                   <p>Damage: {bot.damage}</p>
+                   <p>Armor: {bot.armor}</p>
+                   <p>Class: {bot.bot_class}</p>
+                   </div>
+                </div>
+                    ))
+                ) : (
+                    <p>No bots in your army yet! Click on a bot to add to your army!</p>
+                )}
+            </div>
         </div>
     );
 };

@@ -1,0 +1,69 @@
+/* MyBotArmy.css */
+
+.container {
+    background: linear-gradient(135deg, #0d1b2a, #1b2a38); /* Darker space gradient */
+    color: #ffffff; /* White text for contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    margin-top: 20px; /* Space between sections */
+  }
+  
+  .heading {
+    color: #e0e0e0; /* Light text color for headings */
+    margin-bottom: 20px;
+  }
+  
+  .bot-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid layout */
+    gap: 20px;
+  }
+  
+  .bot-card {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    border: 2px solid #444; /* Subtle border */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .bot-card:hover {
+    background: rgba(255, 255, 255, 0.2); /* Slightly more visible on hover */
+    transform: translateY(-5px); /* Lift effect on hover */
+  }
+  
+  .bot-image {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 10px;
+  }
+/*   
+  button {
+    background: #d9534f; 
+    color: #ffffff; 
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  } */
+  
+button:hover {
+    background: #c9302c; /* Darker red on hover */
+  }
+  
+ p {
+    margin: 10px 0;
+  }
+  
+button {
+    color: red;
+    font-size: 1.5rem;
+    cursor: pointer;
+    float: right; /* Position the button to the right */
+}
+.bot-card {
+    position: relative; /* Make the delete button position relative to the card */
+}
