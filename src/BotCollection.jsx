@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './BotCollection.css';
 
-const baseURL = "http://localhost:3000/bots";
+const baseURL = "https://bot-battlr-server-pied.vercel.app/bots";
 
 const BotCollection = ({ onAddToArmy }) => {
 

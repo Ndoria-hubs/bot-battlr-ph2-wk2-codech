@@ -62,7 +62,7 @@ To set up BOT BATTLR  on your local machine, follow these steps:
 ## Development
 
 TO modify the application:
-1. Update the movie in the local server('http://localhost:3000/bots')
+1. Update the movie in the local server('https://bot-battlr-server-pied.vercel.app/bots')
 2. Modify components as desired.
 3. Test changes locally before deploying.
 

@@ -4,7 +4,7 @@ import BotCollection from './BotCollection';
 import MyBotArmy from './MyBotArmy';
 
 function App() {
-  const baseURL = "http://localhost:3000/bots";
+  const baseURL = "https://bot-battlr-server-pied.vercel.app/bots";
 
   const [botArmy, setBotArmy] = useState([]);
 
